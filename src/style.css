@@ -1,4 +1,7 @@
 /* Empty. Add your own CSS if you like */
+.ionic-datepicker .item-select select{
+    padding: 1px;
+}
 
 .color_blue {
   color: rgb(56, 126, 245) !important;
@@ -24,7 +27,7 @@
 
 .date_cell {
   padding: 5px;
-  width: 26px;S3cr3tD3ck
+  width: 26px;
 }
 
 .error_msg {
@@ -70,10 +73,11 @@
   border-left: 4px solid rgba(0, 0, 0, 0);
 }
 
-.left_arrow {
+.ionic-datepicker .left_arrow {
   direction: rtl;
+  padding-top: 45px;
 }
 
-.right_arrow {
-
+.ionic-datepicker .right_arrow {
+  padding-top: 45px;
 }
