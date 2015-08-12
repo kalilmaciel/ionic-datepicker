@@ -160,12 +160,12 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       scope.monthChanged = function (month) {
         var monthNumber = scope.monthsList.indexOf(month);
         currentDate.setMonth(monthNumber);
-        refreshDateList(currentDate)
+        refreshDateList(currentDate);
       };
 
       scope.yearChanged = function (year) {
         currentDate.setFullYear(year);
-        refreshDateList(currentDate)
+        refreshDateList(currentDate);
       };
 
       scope.prevMonth = function () {
@@ -177,7 +177,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
         scope.currentMonth = monthsList[currentDate.getMonth()];
         scope.currentYear = currentDate.getFullYear();
 
-        refreshDateList(currentDate)
+        refreshDateList(currentDate);
       };
 
       scope.nextMonth = function () {
@@ -187,7 +187,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
         currentDate.setMonth(currentDate.getMonth() + 1);
         scope.currentMonth = monthsList[currentDate.getMonth()];
         scope.currentYear = currentDate.getFullYear();
-        refreshDateList(currentDate)
+        refreshDateList(currentDate);
       };
 
       scope.date_selection = {selected: false, selectedDate: '', submitted: false};
@@ -262,8 +262,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
               }
             }
           ]
-        })
-      })
+        });
+      });
     }
-  }
+  };
 }]);
