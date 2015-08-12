@@ -6,7 +6,7 @@ var app = angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templat
 
 app.service('DatepickerService', function () {
 
-  this.monthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  this.monthsList = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
   this.yearsList = [1900,
     1901, 1902, 1903, 1904, 1905, 1906, 1907, 1908, 1909, 1910,
     1911, 1912, 1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920,
@@ -28,7 +28,8 @@ app.service('DatepickerService', function () {
     2071, 2072, 2073, 2074, 2075, 2076, 2077, 2078, 2079, 2080,
     2081, 2082, 2083, 2084, 2085, 2086, 2087, 2088, 2089, 2090,
     2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098, 2099, 2100];
-
+  this.weeklist = ["D", "S", "T", "Q", "Q", "S", "S"];
+  this.buttonsNames = ["Fechar", "Hoje", "Setar"];
 });
 
 app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function ($ionicPopup, DatepickerService) {
@@ -51,6 +52,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       var monthsList = DatepickerService.monthsList;
       scope.monthsList = monthsList;
       scope.yearsList = DatepickerService.yearsList;
+      scope.weekNames = DatepickerService.weekList;
+      scope.buttonsNames = DatepickerService.buttonsNames;
 
       scope.currentMonth = '';
       scope.currentYear = '';
@@ -83,7 +86,6 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       currentDate.setMilliseconds(0);
 
       scope.selctedDateString = currentDate.toString();
-      scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       scope.today = {};
 
       if (scope.mondayFirst == true) {
@@ -212,13 +214,13 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
           scope: scope,
           buttons: [
             {
-              text: 'Close',
+              text: scope.buttonsNames[0], //CLOSE
               onTap: function (e) {
                 scope.callback(undefined);
               }
             },
             {
-              text: 'Today',
+              text: scope.buttonsNames[1], //TODAY
               onTap: function (e) {
 
                 var today = new Date();
@@ -246,7 +248,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
               }
             },
             {
-              text: 'Set',
+              text: scope.buttonsNames[2], //SET
               type: 'button-positive',
               onTap: function (e) {
                 scope.date_selection.submitted = true;
