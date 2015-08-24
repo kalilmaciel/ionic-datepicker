@@ -1,4 +1,4 @@
-<div class="ionic-datepicker">
+<div class="ionic-datepicker no_padding">
     <div class="row no_padding">
         <div class="col col-10 left_arrow">
             <button class="button-clear color_blue" ng-click="prevMonth()"
@@ -7,10 +7,10 @@
             </button>
         </div>
         <div class="col col-80 drop_down">
-            <div class="row select_section">
+            <div class="row select_section no_padding">
                 <div class="col">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row no_padding">
+                        <div class="col-66" style="margin-right: 10px">
                             <div class="list">
                                 <label class="item item-input item-select">
                                     <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)" class="month_select">
@@ -21,9 +21,7 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-33">
                             <div class="list">
                                 <label class="item item-input item-select">
                                     <select ng-model="currentYear" ng-change="yearChanged(currentYear)" class="year_select">
@@ -47,7 +45,7 @@
     </div>
     <div class="calendar_grid">
         <div class="row">
-            <div class="col" ng-repeat="weekName in weekNames track by $index" style="font-weight: bold"> {{ weekName}}</div>
+            <div class="col no_padding text-center" ng-repeat="weekName in weekNames track by $index" style="font-weight: bold"> {{ weekName}}</div>
         </div>
         <div style="height: 180px;">
             <div class="row" ng-repeat="row in rows track by $index" style="text-align: center;">

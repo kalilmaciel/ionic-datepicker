@@ -26,7 +26,6 @@ Give the path of  `style.css, templates.js and ionic-datepicker.js` in your `ind
 ````html
 <link href="lib/ionic-datepicker/dist/style.css" rel="stylesheet"> 
 <!-- path to ionic/angularjs js -->
-<script src="lib/ionic-datepicker/dist/templates.js"></script>
 <script src="lib/ionic-datepicker/dist/ionic-datepicker.js"></script>
 ````    
 

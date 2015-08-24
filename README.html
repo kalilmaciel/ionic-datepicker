@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h2 id="introduction:">Introduction:</h2>
+
+<p>This is an <code>ionic-datepicker</code> bower component, which can be used in any Ionic framework&#8217;s application.</p>
+
+<p><a href="http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/" title="Demo">View Demo</a> </p>
+
+<h2 id="prerequisites.">Prerequisites.</h2>
+
+<p>1) node.js, bower and gulp.</p>
+
+<h2 id="howtouse:">How to use:</h2>
+
+<p>1) In your project repository install the ionic-datepicker using bower</p>
+
+<p>bower install ionic-datepicker &#8211;save</p>
+
+<p>This will install the latest version released.</p>
+
+<p>2) Then you can see the following directory structure see in your project folder</p>
+
+<figure>
+<img src="https://lh3.googleusercontent.com/8x3OByTXzzgJSxm-n5Yg8-0g-u2OZt18j9EbvNTgK3Q=w112-h207-p-no" alt="Directory structure" title="Directory structure" />
+<figcaption>Directory structure</figcaption>
+</figure>
+
+<p>Give the path of <code>style.css, templates.js and ionic-datepicker.js</code> in your <code>index.html</code> file.</p>
+
+<pre><code class="html">&lt;link href=&quot;lib/ionic-datepicker/dist/style.css&quot; rel=&quot;stylesheet&quot;&gt; 
+&lt;!-- path to ionic/angularjs js --&gt;
+&lt;script src=&quot;lib/ionic-datepicker/dist/ionic-datepicker.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>3) In your application module inject the dependency <code>ionic-datepicker</code>, in order to work with the ionic time picker
+<code>javascript
+angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
+//
+}
+</code></p>
+
+<p>4) Use the below format in your template&#8217;s corresponding controller</p>
+
+<pre><code class="javascript">$scope.currentDate = new Date();
+$scope.title = &quot;Custom Title&quot;;
+
+$scope.datePickerCallback = function (val) {
+    if(typeof(val)==='undefined'){      
+        console.log('Date not selected');
+    }else{
+        console.log('Selected date is : ', val);
+    }
+};
+</code></pre>
+
+<p>a) <code>currentDate</code> is the date object which we are passing to the <code>ionic-datepicker</code>.</p>
+
+<p>b) <code>datePickerCallback</code> is the callback function which we have to pass to the <code>ionic-datepicker</code>. This function takes an argument which will return <code>undefined</code> if the user didnot selected any date. And returns a <code>date</code> object, if the user selects any date.</p>
+
+<p>c) <code>title</code> is the string variable, which can be assigned to the datepicker modal&#8217;s title.</p>
+
+<p>5) Then use the below format in your template / html file</p>
+
+<pre><code class="html">&lt;ionic-datepicker idate=&quot;currentDate&quot; disablepreviousdates=&quot;true&quot;  disablefuturedates=&quot;false&quot; callback=&quot;datePickerCallback&quot; disableddates=&quot;disabledDates&quot; title=&quot;title&quot; mondayfirst=&quot;true&quot;&gt;
+    &lt;button class=&quot;button button-block button-positive&quot;&gt; {{ currentDate | date:'dd - MMMM - yyyy' }} &lt;/button&gt;
+&lt;/ionic-datepicker&gt;
+</code></pre>
+
+<p>a) <code>ionic-datepicker</code> is the directive, to which we can pass required vales.</p>
+
+<p>b) <code>idate</code> takes date object. If we don&#8217;t pass any value, the default value will be <code>new Date()</code>.</p>
+
+<p>c) <code>disablepreviousdates</code> takes true or false. <code>true</code> disables the past dates, and <code>false</code> doesn&#8217;t.</p>
+
+<p>c) <code>disablefuturedates</code> takes true or false. <code>true</code> disables the future dates, and <code>false</code> doesn&#8217;t.</p>
+
+<p>d) <code>callback</code> takes the callback function name which will be called once the date picker has been closed.</p>
+
+<p>e) <code>title</code> takes a variable of string type. This will be displayed as a title to the datepicker modal. If this attribute is not present, then it will show &#8216;Select Date&#8217; by default.</p>
+
+<p>f) <code>disableddates</code> is an array of dates to disable the particular dates.</p>
+
+<p>Example : In your controller you can define <code>disabledDates</code> as follows</p>
+
+<pre><code class="javascript">$scope.disabledDates = [
+    new Date(2015,7,10), //months are 0-based, this is August, 10th!
+    new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
+    new Date(&quot;08-14-2015&quot;), //Short format
+    new Date(1439676000000) //UNIX format
+]; 
+</code></pre>
+
+<p>g) <code>mondayfirst</code> takes true or false. If the given values is <code>true</code>, shows Monday as the first day of the week, and if the given value is <code>false</code>, then Sunday will be first day of the week.</p>
+
+<h2 id="screenshots:">Screen Shots:</h2>
+
+<p>Once you are successfully done with the above steps, you should be able to see the below screen shots.
+I have used two buttons here. </p>
+
+<p>The first screen shot shows only the buttons before clicking on them.
+Once you click on the button you should see the second screen shot.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-uhIkYlbcuqsZZneSPOwFoePWvhTeqRKa2kVkwN7mMI=w305-h553-no" alt="Date picker buttons" title="Date picker buttons" />
+<img src="https://lh3.googleusercontent.com/7iEejIcpprFmpgwWvs240Vn9Dn_Dh-R5HgtC_CJVZMs=w305-h553-no" alt="Date picker modal" title="Date picker modal" /></p>
+
+<h2 id="cssclasses:">CSS Classes:</h2>
+
+<h4 id="1ionic-datepicker">1) ionic-datepicker</h4>
+
+<h4 id="2left_arrow">2) left_arrow</h4>
+
+<h4 id="3drop_down">3) drop_down</h4>
+
+<h4 id="4right_arrow">4) right_arrow</h4>
+
+<h4 id="5calendar_grid">5) calendar_grid</h4>
+
+<h4 id="6date_cell">6) date_cell</h4>
+
+<p><img src="https://lh3.googleusercontent.com/3nh7RvLhsIrdg6hZTeQWWYaE32isIWbIDRRLBigngek=w204-h319-no" alt="Date picker grid" title="Date picker grid" />
+<img src="https://lh3.googleusercontent.com/Ls2SVCillpzb_4CEiihgfQTPxL3RkYHZLheHTstRaQw=w204-h312-no" alt="Date picker left arrow" title="Date picker left arrow" />
+<img src="https://lh3.googleusercontent.com/P_IC6bRS4FC3JXy6pdBJVq1kBUnTEqgVha89vqsmcWc=w202-h315-no" alt="Date picker dropdown" title="Date picker dropdown" />
+<img src="https://lh3.googleusercontent.com/MSdEEs-oVNNn8wLvjc4iopXTRREmkdQ2vVVnz1z9UQ8=w201-h314-no" alt="Date picker right arrow" title="Date picker right arrow" />
+<img src="https://lh3.googleusercontent.com/sQH2wqT1qMEGFpEelApo4JuoFUfiMf4Necb7OOXdfuE=w201-h314-no" alt="Date picker calendar_grid" title="Date picker calendar_grid" />
+<img src="https://lh3.googleusercontent.com/1WCeMNH53tfZFBW2GU9QZwQRtqtUuszUk7kszIEYSr8=w201-h312-no" alt="Date picker date cell" title="Date picker date cell" /></p>
+
+<h2 id="versions:">Versions:</h2>
+
+<h3 id="1v0.1.0">1) v0.1.0</h3>
+
+<p>The whole date picker functionality has been implemented, and can be installed with <code>bower install ionic-datepicker --save</code></p>
+
+<h3 id="2v0.1.1">2) v0.1.1</h3>
+
+<p>Bug Fix. This is the latest version of <code>ionic-datepicker</code> component.</p>
+
+<h3 id="3v0.1.2">3) v0.1.2</h3>
+
+<p>Bug Fix. If we don&#8217;t pass the date to the time picker it will pick the todays date by default.</p>
+
+<h3 id="4v0.1.3">4) v0.1.3</h3>
+
+<p><a href="http://forum.ionicframework.com/t/ionic-datepicker-bower-component-for-ionic-framework-applications/21516/14">Bug Fix</a></p>
+
+<h3 id="5v0.2.0">5) v0.2.0</h3>
+
+<p>Disabling previous dates functionality added.</p>
+
+<h3 id="6v0.3.0">6) v0.3.0</h3>
+
+<p>a) User can select the years and months using the dropdown.</p>
+
+<p>b) A callback function is added.</p>
+
+<h3 id="7v0.4.0">7) v0.4.0</h3>
+
+<p><strong>Features</strong></p>
+
+<p>a) Disabling future dates functionality added. You may use it for selecting DOB.</p>
+
+<p>b) Customised title text for datepicker modal&#8217;s added.</p>
+
+<p><strong>BugFixes</strong></p>
+
+<p><a href="https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/22">Bug Fix</a></p>
+
+<p><a href="https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/26">Bug Fix</a></p>
+
+<p><a href="https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/29">Bug Fix</a></p>
+
+<h3 id="8v0.5.0">8) v0.5.0</h3>
+
+<p>a) Feature for disabling particular dates has been added.</p>
+
+<p>b) CSS classes added for customisation.</p>
+
+<h3 id="9v0.6.0">9) v0.6.0</h3>
+
+<p>a) Date selection color issue fixed.</p>
+
+<p>b) Added feature to show Monday as the first day of the week.</p>
+
+<h2 id="license:">License:</h2>
+
+<p><a href="https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD" title="MIT">MIT</a></p>
+
+<h2 id="contact:">Contact:</h2>
+
+<p>gmail : rajeshwar.patlolla@gmail.com</p>
+
+<p>github : https://github.com/rajeshwarpatlolla</p>
+
+<p>twitter : https://twitter.com/rajeshwar_9032</p>
+
+<p>facebook : https://www.facebook.com/rajeshwarpatlolla</p>
+
+<p>paypal : rajeshwar.patlolla@gmail.com</p>
+
+</body>
+</html>

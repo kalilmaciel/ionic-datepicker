@@ -29,7 +29,7 @@ app.service('DatepickerService', function () {
     2081, 2082, 2083, 2084, 2085, 2086, 2087, 2088, 2089, 2090,
     2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098, 2099, 2100];
   this.weekNames = ["D", "S", "T", "Q", "Q", "S", "S"];
-  this.buttonsNames = ["Fechar", "Hoje", "Setar"];
+  this.buttonsNames = ["Fechar", "Hoje", "OK"];
 });
 
 app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function ($ionicPopup, DatepickerService) {
